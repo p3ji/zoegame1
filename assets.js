@@ -6,28 +6,28 @@ export const THEMES = {
     name: 'Cozy Afternoon Tea',
     description: 'A delicate selection of scones, creams, and dainty pastries for a quiet rainy afternoon.',
     recommendedPlate: 'porcelain_plate',
-    ingredients: ['scone_top', 'scone_bottom', 'strawberry_jam', 'clotted_cream', 'macaron_pink', 'macaron_green', 'teacup_vintage', 'sugar_cube', 'lemon_slice', 'mint_leaf', 'lavender_sprig']
+    ingredients: ['scone_top', 'scone_bottom', 'strawberry_jam', 'clotted_cream', 'macaron_pink', 'macaron_green', 'teacup_vintage', 'teapot_vintage', 'tea_bag', 'honey_jar', 'sugar_cube', 'lemon_slice', 'mint_leaf', 'lavender_sprig']
   },
   autumn_feast: {
     id: 'autumn_feast',
     name: 'Harvest Forest Feast',
     description: 'Warm, rustic flavors of squash, pecans, figs, and pumpkin soup celebrating the autumn colors.',
     recommendedPlate: 'slate_plate',
-    ingredients: ['soup_bowl', 'roasted_squash', 'pecan_half', 'fig_slice', 'pomegranate_seeds', 'maple_leaf', 'rosemary_sprig', 'cinnamon_stick']
+    ingredients: ['soup_bowl', 'roasted_squash', 'pecan_half', 'fig_slice', 'pomegranate_seeds', 'maple_leaf', 'rosemary_sprig', 'cinnamon_stick', 'warm_cider']
   },
   midnight_snack: {
     id: 'midnight_snack',
     name: 'Starlit Midnight Cafe',
     description: 'Fluffy pancakes, sweet syrups, rich brownies, and fresh berries to accompany late night thoughts.',
     recommendedPlate: 'starry_saucer',
-    ingredients: ['pancakes', 'syrup_drizzle', 'brownie_square', 'whipped_cream', 'banana_slice', 'strawberry_whole', 'blueberry', 'star_sprinkles', 'chamomile_flower']
+    ingredients: ['pancakes', 'syrup_drizzle', 'brownie_square', 'whipped_cream', 'cocoa_mug', 'fried_egg', 'banana_slice', 'strawberry_whole', 'blueberry', 'star_sprinkles', 'chamomile_flower']
   },
   zen_bento: {
     id: 'zen_bento',
     name: 'Zen Table Bento',
     description: 'A balanced and beautiful arrangement of rice, noodles, fresh edamame, and shaped vegetables.',
     recommendedPlate: 'bento_box',
-    ingredients: ['rice_bed', 'soba_nest', 'edamame_pod', 'carrot_star', 'tamagoyaki', 'cucumber_fan', 'cherry_blossom', 'tofu_cube']
+    ingredients: ['rice_bed', 'soba_nest', 'matcha_cup', 'salmon_sushi', 'soy_sauce_dish', 'edamame_pod', 'carrot_star', 'tamagoyaki', 'cucumber_fan', 'cherry_blossom', 'tofu_cube']
   }
 };
 
@@ -986,6 +986,176 @@ export const INGREDIENTS = {
         <polygon points="12,28 30,20 48,28 30,36" fill="#FCFCF6" stroke="#ECECE8" stroke-width="1" />
         <!-- Gloss sheen line -->
         <path d="M 28 22 L 44 29" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6" />
+      </svg>
+    `
+  },
+  teapot_vintage: {
+    id: 'teapot_vintage',
+    name: 'Vintage Teapot',
+    category: 'Garnish',
+    sound: 'ceramic_clink',
+    svg: `
+      <svg viewBox="0 0 130 120" width="100%" height="100%">
+        <ellipse cx="65" cy="102" rx="42" ry="10" fill="#000" opacity="0.15" filter="blur(3px)" />
+        <path d="M 28 65 C 5 65 5 28 28 28" fill="none" stroke="#FFFBF0" stroke-width="8" stroke-linecap="round" />
+        <path d="M 28 65 C 5 65 5 28 28 28" fill="none" stroke="#5072A7" stroke-width="2" stroke-linecap="round" />
+        <path d="M 98 62 C 118 62 124 38 120 32 C 116 28 110 40 98 48 Z" fill="#FFFBF0" stroke="#5072A7" stroke-width="2.5" />
+        <circle cx="65" cy="65" r="36" fill="#FFFBF0" stroke="#5072A7" stroke-width="3" />
+        <path d="M 45 65 C 55 75 75 75 85 65" fill="none" stroke="#5072A7" stroke-width="2.5" opacity="0.8" />
+        <circle cx="65" cy="70" r="3.5" fill="#5072A7" opacity="0.8" />
+        <path d="M 45 32 C 45 22 85 22 85 32 Z" fill="#FFFBF0" stroke="#5072A7" stroke-width="2.5" />
+        <circle cx="65" cy="20" r="6" fill="#FFFBF0" stroke="#D4AF37" stroke-width="2" />
+        <circle cx="65" cy="20" r="2" fill="#D4AF37" />
+        <path d="M 38 45 A 36 36 0 0 1 92 45" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.5" />
+      </svg>
+    `
+  },
+  tea_bag: {
+    id: 'tea_bag',
+    name: 'Tea Bag',
+    category: 'Garnish',
+    sound: 'paper_crunch',
+    svg: `
+      <svg viewBox="0 0 80 80" width="100%" height="100%">
+        <path d="M 40 25 Q 25 10 32 4" fill="none" stroke="#8B7B6B" stroke-width="1.5" stroke-dasharray="3 2" />
+        <polygon points="32,4 37,2 35,-2 30,0" fill="#E72636" stroke="#9E121E" stroke-width="0.5" transform="translate(-32,-4) scale(1.5) translate(32,4)" />
+        <polygon points="25,25 55,25 55,65 25,65" fill="#FAF6EE" stroke="#D2CBB8" stroke-width="1.5" />
+        <rect x="29" y="38" width="22" height="22" rx="2" fill="#8B6C4F" opacity="0.45" />
+        <line x1="40" y1="23" x2="40" y2="28" stroke="#708090" stroke-width="2.5" />
+      </svg>
+    `
+  },
+  honey_jar: {
+    id: 'honey_jar',
+    name: 'Honey Jar',
+    category: 'Topping',
+    sound: 'sauce_splat',
+    svg: `
+      <svg viewBox="0 0 90 90" width="100%" height="100%">
+        <ellipse cx="45" cy="80" rx="28" ry="8" fill="#000" opacity="0.12" filter="blur(2px)" />
+        <rect x="20" y="32" width="50" height="42" rx="10" fill="rgba(240,248,255,0.4)" stroke="#A0C0E0" stroke-width="2.5" />
+        <rect x="24" y="44" width="42" height="26" rx="6" fill="#F4A460" stroke="#CD7F32" stroke-width="1.5" />
+        <path d="M 24 50 Q 45 42 66 48 L 66 70 L 24 70 Z" fill="#D2691E" opacity="0.8" />
+        <rect x="16" y="24" width="58" height="10" rx="3" fill="#C11B29" stroke="#870E17" stroke-width="2" />
+        <rect x="30" y="52" width="30" height="15" rx="2" fill="#FFF" stroke="#E6C299" stroke-width="1" />
+        <text x="45" y="63" font-size="9" font-family="sans-serif" font-weight="bold" fill="#B87333" text-anchor="middle">HONEY</text>
+        <g transform="translate(48, 14) rotate(40)">
+          <line x1="0" y1="0" x2="0" y2="52" stroke="#CD853F" stroke-width="3.5" stroke-linecap="round" />
+          <rect x="-8" y="34" width="16" height="14" rx="3" fill="#D2691E" stroke="#CD853F" stroke-width="1" />
+          <line x1="-8" y1="38" x2="8" y2="38" stroke="#A0522D" stroke-width="1.5" />
+          <line x1="-8" y1="42" x2="8" y2="42" stroke="#A0522D" stroke-width="1.5" />
+          <line x1="-8" y1="46" x2="8" y2="46" stroke="#A0522D" stroke-width="1.5" />
+        </g>
+      </svg>
+    `
+  },
+  warm_cider: {
+    id: 'warm_cider',
+    name: 'Apple Cider',
+    category: 'Garnish',
+    sound: 'ceramic_clink',
+    svg: `
+      <svg viewBox="0 0 110 110" width="100%" height="100%">
+        <ellipse cx="55" cy="94" rx="42" ry="10" fill="#000" opacity="0.15" filter="blur(3px)" />
+        <path d="M 85 45 C 105 45 105 75 85 75" fill="none" stroke="#C36241" stroke-width="7" stroke-linecap="round" />
+        <path d="M 85 45 C 105 45 105 75 85 75" fill="none" stroke="#9A4526" stroke-width="1.5" stroke-linecap="round" />
+        <rect x="22" y="32" width="66" height="58" rx="14" fill="#C36241" stroke="#9A4526" stroke-width="3" />
+        <ellipse cx="55" cy="40" rx="28" ry="6" fill="#B85D18" stroke="#8A4107" stroke-width="1.5" />
+        <path d="M 40 40 Q 52 32 64 38" fill="none" stroke="#FFFDD0" stroke-width="3.5" stroke-linecap="round" />
+        <path d="M 40 40 Q 52 32 64 38" fill="none" stroke="#D32F2F" stroke-width="1" stroke-linecap="round" />
+        <g transform="translate(32, 22) rotate(-25)">
+          <rect x="0" y="0" width="8" height="36" rx="2" fill="#8B5A2B" stroke="#5C3A1A" stroke-width="1" />
+          <line x1="0" y1="6" x2="8" y2="6" stroke="#3D220F" stroke-width="1" />
+        </g>
+        <path d="M 48 24 Q 44 14 50 6" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+        <path d="M 64 24 Q 61 16 66 10" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" opacity="0.3" />
+      </svg>
+    `
+  },
+  cocoa_mug: {
+    id: 'cocoa_mug',
+    name: 'Hot Cocoa',
+    category: 'Garnish',
+    sound: 'ceramic_clink',
+    svg: `
+      <svg viewBox="0 0 110 110" width="100%" height="100%">
+        <ellipse cx="55" cy="94" rx="42" ry="10" fill="#000" opacity="0.15" filter="blur(3px)" />
+        <path d="M 25 45 C 5 45 5 75 25 75" fill="none" stroke="#D32F2F" stroke-width="7.5" stroke-linecap="round" />
+        <path d="M 25 45 C 5 45 5 75 25 75" fill="none" stroke="#9A0F0F" stroke-width="1.5" stroke-linecap="round" />
+        <rect x="22" y="32" width="66" height="58" rx="14" fill="#D32F2F" stroke="#9A0F0F" stroke-width="3" />
+        <path d="M 55 52 L 55 70 M 46 61 L 64 61 M 49 55 L 61 67 M 49 67 L 61 55" fill="none" stroke="#FFF" stroke-width="1.5" opacity="0.75" />
+        <ellipse cx="55" cy="40" rx="28" ry="6" fill="#3D220F" />
+        <polygon points="46,38 52,36 54,42 48,44" fill="#FFF" stroke="#DDD" stroke-width="0.5" />
+        <polygon points="62,37 68,39 66,44 60,42" fill="#FFF" stroke="#DDD" stroke-width="0.5" />
+        <polygon points="53,42 58,41 59,45 54,46" fill="#FFF" stroke="#DDD" stroke-width="0.5" />
+      </svg>
+    `
+  },
+  fried_egg: {
+    id: 'fried_egg',
+    name: 'Fried Egg',
+    category: 'Topping',
+    sound: 'sauce_splat',
+    svg: `
+      <svg viewBox="0 0 100 100" width="100%" height="100%">
+        <path d="M 12 52 C 10 32 30 12 55 15 C 80 18 90 40 85 62 C 80 82 52 92 32 85 C 12 78 14 72 12 52 Z" fill="#FFFDF8" stroke="#ECE8DC" stroke-width="2.5" />
+        <path d="M 15 28 Q 10 38 14 48" fill="none" stroke="#C49A6C" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
+        <path d="M 85 58 Q 88 68 80 75" fill="none" stroke="#C49A6C" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
+        <circle cx="52" cy="48" r="18" fill="#FF9F1C" stroke="#E07A00" stroke-width="1.5" />
+        <ellipse cx="46" cy="42" rx="5" ry="3" fill="#FFF" transform="rotate(-30, 46, 42)" opacity="0.75" />
+        <circle cx="58" cy="54" r="2.5" fill="#FFAE42" opacity="0.9" />
+      </svg>
+    `
+  },
+  matcha_cup: {
+    id: 'matcha_cup',
+    name: 'Matcha Green Tea',
+    category: 'Garnish',
+    sound: 'ceramic_clink',
+    svg: `
+      <svg viewBox="0 0 100 100" width="100%" height="100%">
+        <ellipse cx="50" cy="85" rx="36" ry="8" fill="#000" opacity="0.12" filter="blur(2px)" />
+        <path d="M 18 35 C 18 78 82 78 82 35 Z" fill="#3D3A37" stroke="#252321" stroke-width="3" />
+        <ellipse cx="50" cy="35" rx="31" ry="7" fill="#4E7844" stroke="#252321" stroke-width="1.5" />
+        <ellipse cx="50" cy="35" rx="28" ry="5.5" fill="#6B9C58" />
+        <circle cx="42" cy="34" r="1.5" fill="#88BC73" />
+        <circle cx="46" cy="36" r="1.2" fill="#88BC73" />
+        <circle cx="58" cy="33" r="1.5" fill="#88BC73" />
+        <circle cx="54" cy="35" r="1.8" fill="#88BC73" />
+        <path d="M 46 22 Q 42 12 48 4" fill="none" stroke="#FFF" stroke-width="1.2" stroke-linecap="round" opacity="0.3" />
+      </svg>
+    `
+  },
+  salmon_sushi: {
+    id: 'salmon_sushi',
+    name: 'Salmon Nigiri',
+    category: 'Topping',
+    sound: 'wood_tap',
+    svg: `
+      <svg viewBox="0 0 100 65" width="100%" height="100%">
+        <ellipse cx="50" cy="42" rx="36" ry="16" fill="#FFFDF8" stroke="#E0DFD5" stroke-width="1.5" />
+        <ellipse cx="32" cy="44" rx="4" ry="2" fill="#E6E5DC" transform="rotate(15, 32, 44)" />
+        <ellipse cx="68" cy="40" rx="4" ry="2" fill="#E6E5DC" transform="rotate(-25, 68, 40)" />
+        <path d="M 10 32 C 10 16 90 16 90 32 C 90 38 78 44 50 44 C 22 44 10 38 10 32 Z" fill="#FF7F50" stroke="#D04E26" stroke-width="2.5" />
+        <path d="M 28 22 Q 40 28 52 22" fill="none" stroke="#FFFDF8" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+        <path d="M 44 23 Q 56 30 68 23" fill="none" stroke="#FFFDF8" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+        <path d="M 60 25 Q 70 32 80 25" fill="none" stroke="#FFFDF8" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+        <path d="M 18 24 Q 50 14 82 24" fill="none" stroke="#FFF" stroke-width="1.5" opacity="0.45" />
+      </svg>
+    `
+  },
+  soy_sauce_dish: {
+    id: 'soy_sauce_dish',
+    name: 'Soy Sauce Bowl',
+    category: 'Garnish',
+    sound: 'ceramic_clink',
+    svg: `
+      <svg viewBox="0 0 90 90" width="100%" height="100%">
+        <ellipse cx="45" cy="50" rx="40" ry="34" fill="#000" opacity="0.12" filter="blur(2px)" />
+        <ellipse cx="45" cy="45" rx="36" ry="30" fill="#2B2B2B" stroke="#1A1A1A" stroke-width="3" />
+        <ellipse cx="45" cy="45" rx="30" ry="24" fill="none" stroke="#D4AF37" stroke-width="1" opacity="0.4" />
+        <ellipse cx="45" cy="45" rx="27" ry="21" fill="#1C1008" />
+        <path d="M 22 36 A 24 18 0 0 1 68 36" fill="none" stroke="#FFF" stroke-width="2" stroke-linecap="round" opacity="0.25" />
       </svg>
     `
   }
