@@ -6,15 +6,15 @@
   --font-body: 'Quicksand', sans-serif;
   --font-written: 'Caveat', cursive;
   
-  /* Color Palette */
-  --bg-table: #d7a15c;
-  --color-text: #3E2B1F;
-  --color-muted: #6D5444;
-  --panel-bg: rgba(255, 252, 245, 0.72);
-  --panel-border: rgba(230, 218, 198, 0.6);
-  --accent-gold: #D4AF37;
-  --accent-terracotta: #C36241;
-  --accent-sage: #6B9C58;
+  /* Color Palette - Summer Farmhouse Theme */
+  --bg-table: #FAF5D8;
+  --color-text: #2D3A2D;
+  --color-muted: #506650;
+  --panel-bg: rgba(255, 255, 252, 0.85);
+  --panel-border: rgba(218, 228, 208, 0.8);
+  --accent-gold: #FFC048;
+  --accent-terracotta: #FF7F50;
+  --accent-sage: #88B04B;
   --white-card: #FFFFFF;
 }
 
@@ -29,7 +29,7 @@
 body {
   font-family: var(--font-body);
   color: var(--color-text);
-  background-color: #f7ede2;
+  background-color: #f4ebd0;
   overflow: hidden;
   height: 100vh;
   width: 100vw;
@@ -47,10 +47,10 @@ body {
   bottom: 0;
   pointer-events: none;
   z-index: 10;
-  opacity: 0.15;
+  opacity: 0.12;
   background-image: 
-    linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px),
-    linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px),
+    linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px);
   background-size: 10px 10px;
 }
 
@@ -62,11 +62,11 @@ body {
   max-width: 1024px;
   max-height: 800px;
   background: 
-    linear-gradient(0deg, #b07c44 0%, transparent 100%),
-    repeating-linear-gradient(90deg, #d39c59, #d39c59 80px, #c68e4a 80px, #c68e4a 82px);
-  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.25), 0 20px 40px rgba(0, 0, 0, 0.15);
+    linear-gradient(0deg, rgba(235, 225, 185, 0.25) 0%, transparent 100%),
+    repeating-linear-gradient(90deg, #FAF7E8, #FAF7E8 80px, #ECE5C4 80px, #ECE5C4 82px);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.08), 0 20px 40px rgba(0, 0, 0, 0.15);
   border-radius: 24px;
-  border: 12px solid #5a3d1d;
+  border: 12px solid #8FA382; /* Sage green wood border */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -130,7 +130,7 @@ body {
 .btn-cozy:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 0 var(--color-text);
-  background: #FFF5EC;
+  background: #FFFEE6;
 }
 
 .btn-cozy:active {
@@ -139,20 +139,20 @@ body {
 }
 
 .btn-accent {
-  background: var(--accent-terracotta);
+  background: var(--accent-sage);
   color: #FFFDFC;
-  border-color: #5C2310;
-  box-shadow: 0 3px 0 #5C2310;
+  border-color: var(--color-text);
+  box-shadow: 0 3px 0 var(--color-text);
 }
 
 .btn-accent:hover {
-  background: #D96E4C;
+  background: #99C55C;
   color: #FFFDFC;
-  box-shadow: 0 5px 0 #5C2310;
+  box-shadow: 0 5px 0 var(--color-text);
 }
 
 .btn-accent:active {
-  box-shadow: 0 1px 0 #5C2310;
+  box-shadow: 0 1px 0 var(--color-text);
 }
 
 /* CLIENT & SOUNDS BAR */
@@ -800,3 +800,40 @@ body {
   flex-direction: column;
   gap: 8px;
 }
+
+/* Decorative Farmhouse String Lights */
+.farmhouse-lights {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  pointer-events: none;
+  z-index: 18;
+}
+
+@keyframes glowPulse {
+  0% { 
+    filter: drop-shadow(0 0 3px #FFAE00) drop-shadow(0 0 6px #FFAE00); 
+    opacity: 0.85; 
+  }
+  50% { 
+    filter: drop-shadow(0 0 8px #FFD32A) drop-shadow(0 0 16px #FFD32A); 
+    opacity: 1; 
+  }
+  100% { 
+    filter: drop-shadow(0 0 3px #FFAE00) drop-shadow(0 0 6px #FFAE00); 
+    opacity: 0.85; 
+  }
+}
+
+.edison-bulb {
+  animation: glowPulse 4s infinite ease-in-out;
+  transform-origin: center top;
+}
+
+.edison-bulb-1 { animation-delay: 0s; }
+.edison-bulb-2 { animation-delay: 1s; }
+.edison-bulb-3 { animation-delay: 2s; }
+.edison-bulb-4 { animation-delay: 3s; }
+

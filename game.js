@@ -691,12 +691,12 @@ async function renderDishToCanvas(canvas, size = 450) {
   canvas.height = size;
   const ctx = canvas.getContext('2d');
   
-  // Fill warm beige linen background
-  ctx.fillStyle = '#E8DCC4';
+  // Fill warm cream farmhouse linen background
+  ctx.fillStyle = '#FAF7E8';
   ctx.fillRect(0, 0, size, size);
   
   // Draw soft texture cross-hatching
-  ctx.strokeStyle = '#DFCFA9';
+  ctx.strokeStyle = '#EAE2C2';
   ctx.lineWidth = 1;
   ctx.globalAlpha = 0.4;
   for (let i = 0; i < size; i += 12) {
