@@ -71,6 +71,296 @@ export const CLIENTS = [
       "Zoe, peace to you. Could you prepare a salmon nigiri sushi platter with edamame pods, cucumber fans, and a small dish of soy sauce in my bento tray?"
     ],
     theme: 'zen_bento'
+  },
+  {
+    name: 'Flora',
+    avatar: '🌸',
+    messages: [
+      "Hi Zoe. I'm feeling a bit floral today. A delicate porcelain saucer with a lavender sprig, pink macarons, and a warm teapot would make my afternoon perfect.",
+      "Zoe, could you brew a soothing herbal tea? Please pair it with a fresh mint leaf and a few pistachio macarons on porcelain.",
+      "Hello Zoe! I would love a vintage cup of tea with sugar cubes and a lavender flower to look at while I paint."
+    ],
+    theme: 'tea_party'
+  },
+  {
+    name: 'Jasper',
+    avatar: '🪵',
+    messages: [
+      "Zoe, look at these acorn squashes! Could you plate a roasted squash and pumpkin seeds on a slate plate with some cinnamon sticks?",
+      "Hey Zoe, need a rustic forest plate. A warm bowl of pumpkin soup with roasted seeds and autumn leaves, please.",
+      "Hello Zoe. Please arrange a simple harvest plate: roasted squash, toasted pecans, and fig slices."
+    ],
+    theme: 'autumn_feast'
+  },
+  {
+    name: 'Phoebe',
+    avatar: '🦉',
+    messages: [
+      "Zoe, it's past midnight and I'm listening to the crickets. A starry saucer with chamomile flowers, hot cocoa, and star sprinkles would ease my mind.",
+      "Hi Zoe. I can't sleep. Could you serve a cup of chamomile tea, some banana slices, and whipped cream?",
+      "Zoe, looking at the night sky. A dark brownie square, starry sprinkles, and a hot cocoa mug would make this night perfect."
+    ],
+    theme: 'midnight_snack'
+  },
+  {
+    name: 'Hana',
+    avatar: '🏵️',
+    messages: [
+      "Zoe, spring is in the air. Could you prepare a bamboo bento box with a fresh cherry blossom garnish, tofu cubes, and rolled omelette on steamed rice?",
+      "Hello Zoe. A neat bento is so peaceful. Rice with sesame, cucumber fans, and cherry blossoms, please.",
+      "Zoe, my friend. Please make a clean Zen platter with tofu, edamame pods, and star-cut carrots."
+    ],
+    theme: 'zen_bento'
+  },
+  {
+    name: 'Arthur',
+    avatar: '🎩',
+    messages: [
+      "Good day, Zoe. Would you be so kind as to serve a vintage teacup and a scone split in two with plenty of strawberry jam and clotted cream?",
+      "Zoe, my good friend. A vintage teapot, sugar cubes, and a freshly baked scone, if you please.",
+      "Ah Zoe. I would enjoy a scone top with strawberry jam, a lemon wheel, and lavender on vintage porcelain."
+    ],
+    theme: 'tea_party'
+  },
+  {
+    name: 'Sylvie',
+    avatar: '🌲',
+    messages: [
+      "Zoe, I just got back from a forest walk. A warm terracotta bowl of pumpkin soup garnished with rosemary sprigs and figs on slate would be lovely.",
+      "Hi Zoe. The forest is so quiet. Please arrange roasted acorn squash, fig slices, and maple leaves on a slate slab.",
+      "Zoe, let's make a rustic display. Pumpkin soup, pecans, and rosemary sprigs for a cozy afternoon."
+    ],
+    theme: 'autumn_feast'
+  },
+  {
+    name: 'Stella',
+    avatar: '✨',
+    messages: [
+      "Hey Zoe, late night gaming session! Can you make me a big stack of pancakes with maple syrup drizzle, banana slices, and blueberries?",
+      "Zoe! Need a sweet treat under the stars. Pancakes with whipped cream, strawberries, and star sprinkles, please.",
+      "Hi Zoe. A late-night fudge brownie square with chocolate drizzle and banana slices would be perfect."
+    ],
+    theme: 'midnight_snack'
+  },
+  {
+    name: 'Ryu',
+    avatar: '🐉',
+    messages: [
+      "Hello Zoe. I am seeking simple harmony. Please prepare soba noodles, cucumber fans, and a small dish of soy sauce in my bento tray.",
+      "Zoe, peace to you. Soba noodles with green onions, edamame pods, and tofu cubes, please.",
+      "Hi Zoe. Let's arrange salmon nigiri, a cup of matcha green tea, and edamame in a bento box."
+    ],
+    theme: 'zen_bento'
+  },
+  {
+    name: 'Milly',
+    avatar: '🐝',
+    messages: [
+      "Hi Zoe! Can we try something sweet? I'd love a warm scone topped with clotted cream and a golden drizzle from the honey jar.",
+      "Zoe, dear. A teapot, a cup of hot tea with a spoonful of honey, and some pink macarons, please.",
+      "Hello Zoe! A scone base with clotted cream, strawberry jam, and lavender sprigs would be delightful."
+    ],
+    theme: 'tea_party'
+  },
+  {
+    name: 'Gideon',
+    avatar: '🍂',
+    messages: [
+      "Zoe, the autumn wind is howling. A slate plate with roasted acorn squash, fig slices, and toasted pecans would be so comforting.",
+      "Hi Zoe! Let's plate warm apple cider, a cinnamon stick, and roasted squash seeds on a dark stone plate.",
+      "Zoe, my friend. Arrange pomegranate seeds, fig halves, and golden maple leaves for an autumn tribute."
+    ],
+    theme: 'autumn_feast'
+  },
+  {
+    name: 'Luna',
+    avatar: '🐈‍⬛',
+    messages: [
+      "Zoe, the moon is full tonight. Could you plate a rich fudge brownie topped with a swirl of whipped cream and whole strawberries?",
+      "Hey Zoe! Pancakes with syrup drizzle, blueberries, and chamomile flowers, please.",
+      "Zoe, a midnight snack: a warm mug of hot cocoa with marshmallows and fresh banana slices."
+    ],
+    theme: 'midnight_snack'
+  },
+  {
+    name: 'Yuki',
+    avatar: '❄️',
+    messages: [
+      "Zoe, let's have a peaceful evening. A bento box containing salmon nigiri, edamame pods, and a steaming cup of green matcha tea, please.",
+      "Hello Zoe. A Zen arrangement: soba noodles, tofu cubes, and rolled omelette with cherry blossoms.",
+      "Zoe! Please prepare a bento box with steamed rice, soy sauce, and fresh cucumber fans."
+    ],
+    theme: 'zen_bento'
+  },
+  {
+    name: 'Oliver',
+    avatar: '📖',
+    messages: [
+      "Hello Zoe. Reading a cozy book today. I'd love a teapot of hot tea, a lemon slice, and a couple of green macarons on porcelain.",
+      "Hi Zoe. A scone with cream, a cup of tea with sugar cubes, and a mint leaf would accompany my novel perfectly.",
+      "Zoe, dear. Lavender tea in a vintage cup, macarons, and sugar cubes on a beautiful saucer, please."
+    ],
+    theme: 'tea_party'
+  },
+  {
+    name: 'Hazel',
+    avatar: '🐿️',
+    messages: [
+      "Zoe! I've been gathering forest treasures. Could you arrange some pomegranate seeds, pecans, and autumn maple leaves on slate?",
+      "Hi Zoe. Acorn squash, rosemary sprigs, and cinnamon bark for a beautiful harvest plate.",
+      "Zoe, look at this! Roasted squash, toasted pecans, and fig slices on rustic slate."
+    ],
+    theme: 'autumn_feast'
+  },
+  {
+    name: 'Felix',
+    avatar: '☕',
+    messages: [
+      "Zoe, I'm working on a late-night project. A hot cocoa mug with marshmallows and a fudge brownie square would keep me energized.",
+      "Hey Zoe! Pancakes with syrup, banana slices, and a chocolate brownie on my starry saucer, please.",
+      "Zoe. Hot cocoa with whipped cream and star sprinkles is the ultimate midnight comfort."
+    ],
+    theme: 'midnight_snack'
+  },
+  {
+    name: 'Mei',
+    avatar: '🎋',
+    messages: [
+      "Zoe, my friend. Let's arrange a beautiful bento box with star-cut carrots, tofu cubes, and edamame pods on a bed of steamed rice.",
+      "Hello Zoe. Matcha green tea, rolled omelette, and cucumber fans make a perfect bento lunch.",
+      "Zoe, peace to you. Soba noodles, tofu, and cherry blossoms on a bamboo tray."
+    ],
+    theme: 'zen_bento'
+  },
+  {
+    name: 'Tabitha',
+    avatar: '🧶',
+    messages: [
+      "Good afternoon Zoe. I'm knitting a warm scarf. A hot vintage teacup, sugar cubes, and a calming lavender sprig would make my day.",
+      "Zoe, my sweet. Scones with cream and jam, a hot teapot, and a fresh mint leaf, please.",
+      "Hi Zoe! Macarons, lemon slices, and hot tea in a porcelain cup would be lovely."
+    ],
+    theme: 'tea_party'
+  },
+  {
+    name: 'Bramble',
+    avatar: '🦔',
+    messages: [
+      "Zoe, it's chilly under the hedge. A warm bowl of pumpkin soup with toasted pecans and fig slices on slate would warm me up.",
+      "Hi Zoe. Autumn is here! Squash, pecans, and maple leaves on stone, please.",
+      "Zoe! A mug of warm cider, cinnamon bark, and pomegranate seeds for a cozy nest feast."
+    ],
+    theme: 'autumn_feast'
+  },
+  {
+    name: 'Nico',
+    avatar: '🎸',
+    messages: [
+      "Hey Zoe! Just finished guitar practice. How about a stack of pancakes with whipped cream, whole strawberries, and star sprinkles?",
+      "Zoe! Fudge brownie, banana slices, chocolate syrup drizzle, and cocoa, please.",
+      "Hi Zoe. Chamomile tea, pancakes with syrup, and fresh blueberries for a relaxing night."
+    ],
+    theme: 'midnight_snack'
+  },
+  {
+    name: 'Sora',
+    avatar: '☁️',
+    messages: [
+      "Hello Zoe. Let's make a minimalist Zen tray: a nest of soba noodles, cucumber fans, and a cherry blossom bloom.",
+      "Zoe. Steamed rice, edamame pods, and rolled omelette in a wooden bento box.",
+      "Hi Zoe! Salmon nigiri sushi, soy sauce, and matcha green tea, please."
+    ],
+    theme: 'zen_bento'
+  },
+  {
+    name: 'Beatrice',
+    avatar: '🍯',
+    messages: [
+      "Hello Zoe. I'd love a cup of vintage tea sweetened with honey, a scone base, and some green macarons.",
+      "Zoe, dear. A teapot, honey jar, clotted cream, and fresh mint on vintage porcelain.",
+      "Hi Zoe. Scone top with strawberry jam, clotted cream, and sugar cubes, please."
+    ],
+    theme: 'tea_party'
+  },
+  {
+    name: 'Rowan',
+    avatar: '🏹',
+    messages: [
+      "Zoe, let's celebrate the harvest. Acorn squash, pomegranate seeds, and rosemary sprigs arranged beautifully on slate, please.",
+      "Hi Zoe! Pumpkin soup with seeds, fig slices, and toasted pecans for a forest feast.",
+      "Zoe. Warm cider, cinnamon bark, and maple leaves on a dark stone plate."
+    ],
+    theme: 'autumn_feast'
+  },
+  {
+    name: 'Skye',
+    avatar: '🌌',
+    messages: [
+      "Zoe, the stars are beautiful. A hot mug of marshmallow cocoa and chocolate brownies with star sprinkles on a blue saucer would be perfect.",
+      "Hey Zoe! Pancakes with syrup, banana slices, and blueberries under the night sky.",
+      "Zoe. Chamomile flowers, fudge brownie with whipped cream, and cocoa."
+    ],
+    theme: 'midnight_snack'
+  },
+  {
+    name: 'Jin',
+    avatar: '🍵',
+    messages: [
+      "Zoe, let's keep it simple and clean. Steamed rice with sesame, salmon nigiri, and a cup of matcha green tea.",
+      "Hello Zoe. Bento lunch: soba noodles, star-cut carrots, and tofu cubes.",
+      "Zoe. Cucumber fans, edamame pods, and soy sauce dish in my bamboo box."
+    ],
+    theme: 'zen_bento'
+  },
+  {
+    name: 'Iris',
+    avatar: '🎨',
+    messages: [
+      "Zoe! Painting a cozy scene today. Could you plate a teacup, a scone with strawberry jam, and a fresh mint leaf for inspiration?",
+      "Hi Zoe. A colorful tray: pink and green macarons, lemon slice, and teapot on porcelain.",
+      "Zoe, dear. Lavender sprig, sugar cubes, scone with cream, and vintage tea."
+    ],
+    theme: 'tea_party'
+  },
+  {
+    name: 'Silas',
+    avatar: '🌲',
+    messages: [
+      "Zoe, the woods are quiet. Let's arrange fig slices, toasted pecans, and cinnamon sticks on a rustic slate plate.",
+      "Hi Zoe. Acorn squash, pumpkin seeds, and rosemary sprigs on slate, please.",
+      "Zoe! Warm cider, maple leaves, and pomegranate seeds for a forest winter gathering."
+    ],
+    theme: 'autumn_feast'
+  },
+  {
+    name: 'Chloe',
+    avatar: '🛌',
+    messages: [
+      "Zoe, I'm getting ready for bed. A hot mug of cocoa, banana slices, and chamomile flowers on my starry saucer, please.",
+      "Hey Zoe. Fluffy pancakes with syrup, blueberries, and star sprinkles to dream of.",
+      "Zoe. Brownie square with whipped cream, strawberries, and chamomile blossoms."
+    ],
+    theme: 'midnight_snack'
+  },
+  {
+    name: 'Kaito',
+    avatar: '⛵',
+    messages: [
+      "Zoe, let's design a neat bento. Salmon nigiri sushi, edamame pods, and rolled omelette on a bed of steamed rice.",
+      "Hello Zoe. Soba noodles with green onions, soy sauce, and star carrots in my tray.",
+      "Zoe. Matcha green tea, tofu cubes, and cherry blossoms for a peaceful moment."
+    ],
+    theme: 'zen_bento'
+  },
+  {
+    name: 'Nora',
+    avatar: '🌻',
+    messages: [
+      "Zoe, dear. A sunny afternoon tea on porcelain: a lemon wheel, pink macarons, and a vintage teacup with sugar cubes, please.",
+      "Hi Zoe! Fresh scone with jam and cream, a hot teapot, and lavender sprigs, please.",
+      "Zoe. Scone base with honey, clotted cream, and a fresh mint leaf."
+    ],
+    theme: 'tea_party'
   }
 ];
 

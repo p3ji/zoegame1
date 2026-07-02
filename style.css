@@ -435,12 +435,24 @@ body {
 /* Client Selector Bar */
 .client-bar {
   display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
   border-bottom: 1.5px solid var(--panel-border);
+  scroll-behavior: smooth;
+}
+
+.client-bar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.client-bar::-webkit-scrollbar-thumb {
+  background: var(--panel-border);
+  border-radius: 2px;
 }
 
 .client-select-btn {
-  flex: 1;
-  padding: 8px;
+  flex: 0 0 auto;
+  padding: 8px 18px;
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 0.8rem;

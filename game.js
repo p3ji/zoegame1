@@ -422,6 +422,14 @@ export function setClientTheme(clientIndex) {
   
   // Clean plate for new client
   clearPlate();
+  
+  // Highlight and scroll client tab into view
+  const clientBtns = document.querySelectorAll('.client-select-btn');
+  if (clientBtns.length > clientIndex) {
+    clientBtns.forEach(btn => btn.classList.remove('active'));
+    clientBtns[clientIndex].classList.add('active');
+    clientBtns[clientIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
 }
 
 export function clearPlate() {
@@ -875,6 +883,9 @@ export function savePolaroidToJournal() {
   
   // Clear the plate
   clearPlate();
+  
+  // Transition to the next friend and request!
+  switchToNextClient();
 }
 
 // --- RENDER JOURNAL VIEW ---
@@ -929,22 +940,40 @@ function deleteJournalEntry(id) {
   renderJournalView();
 }
 
+// Dynamically render scrollable client tab list
+function renderClientTabs() {
+  const container = document.getElementById('client-selector-bar');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  CLIENTS.forEach((client, idx) => {
+    const btn = document.createElement('button');
+    btn.className = `client-select-btn ${currentClient.name === client.name ? 'active' : ''}`;
+    btn.innerHTML = `${client.avatar} ${client.name}`;
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.client-select-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      setClientTheme(idx);
+    });
+    container.appendChild(btn);
+  });
+}
+
+// Auto transition to next friend on the list
+function switchToNextClient() {
+  const currentIndex = CLIENTS.findIndex(c => c.name === currentClient.name);
+  const nextIndex = (currentIndex + 1) % CLIENTS.length;
+  setClientTheme(nextIndex);
+}
+
 // --- INITIALIZATION ---
 window.addEventListener('DOMContentLoaded', () => {
   // Bind global UI events
   loadData();
   renderPlateDrawer();
+  renderClientTabs();
   setClientTheme(0);
   
-  // Client selection navigation
-  const clientBtns = document.querySelectorAll('.client-select-btn');
-  clientBtns.forEach((btn, idx) => {
-    btn.addEventListener('click', () => {
-      clientBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      setClientTheme(idx);
-    });
-  });
   
   // Ambient Sound Toggles
   const rainToggle = document.getElementById('soundscape-rain');
