@@ -407,7 +407,9 @@ export function setClientTheme(clientIndex) {
   // Update Prompt UI
   document.getElementById('client-name').textContent = currentClient.name;
   document.getElementById('client-avatar').textContent = currentClient.avatar;
-  document.getElementById('client-bubble-text').textContent = `"${currentClient.message}"`;
+  const msgs = currentClient.messages;
+  const randomMsg = msgs[Math.floor(Math.random() * msgs.length)];
+  document.getElementById('client-bubble-text').textContent = `"${randomMsg}"`;
   
   // Set Recommended Plate
   const themeObj = THEMES[currentThemeId];
@@ -442,11 +444,14 @@ export function addIngredientToPlate(ingredientId) {
   itemCounter++;
   highestZIndex++;
   
+  // Stagger spawn coordinates so they don't pile up directly on top of each other
+  const offset = (placedItems.length % 5) * 15 - 30;
+  
   const newItem = {
     id: `item-${itemCounter}`,
     itemType: ingredientId,
-    x: 0, // centered on canvas
-    y: 0,
+    x: offset,
+    y: offset,
     rotation: 0,
     scale: 1.0,
     zIndex: highestZIndex,
@@ -460,32 +465,44 @@ export function addIngredientToPlate(ingredientId) {
   updateItemControls();
 }
 
-// Render Placed Ingredients
+// Render Placed Ingredients (Persistent DOM update to maintain pointer capture)
 function renderPlacedItems() {
   const container = document.getElementById('canvas-ingredients-layer');
   if (!container) return;
   
-  // Keep DOM elements synchronized
-  container.innerHTML = '';
+  // Remove elements that are no longer in placedItems
+  const activeIds = placedItems.map(item => item.id);
+  Array.from(container.children).forEach(el => {
+    if (!activeIds.includes(el.id)) {
+      el.remove();
+    }
+  });
   
-  // Sort items by zIndex before rendering
-  const sortedItems = [...placedItems].sort((a, b) => a.zIndex - b.zIndex);
-  
-  sortedItems.forEach(item => {
-    const data = INGREDIENTS[item.itemType];
-    if (!data) return;
+  // Add new or update existing elements
+  placedItems.forEach(item => {
+    let el = document.getElementById(item.id);
+    if (!el) {
+      el = document.createElement('div');
+      el.id = item.id;
+      el.className = 'placed-item';
+      
+      const data = INGREDIENTS[item.itemType];
+      el.innerHTML = data.svg;
+      
+      setupItemInteraction(el, item);
+      container.appendChild(el);
+    }
     
-    const wrapper = document.createElement('div');
-    wrapper.id = item.id;
-    wrapper.className = `placed-item ${activeItemId === item.id ? 'active' : ''}`;
-    wrapper.style.transform = `translate(-50%, -50%) translate(${item.x}px, ${item.y}px) rotate(${item.rotation}deg) scale(${item.scale}) scaleX(${item.flipX ? -1 : 1})`;
-    wrapper.style.zIndex = item.zIndex;
-    wrapper.innerHTML = data.svg;
+    // Update active highlight classes
+    if (activeItemId === item.id) {
+      el.classList.add('active');
+    } else {
+      el.classList.remove('active');
+    }
     
-    // Setup Drag interaction using PointerEvents
-    setupItemInteraction(wrapper, item);
-    
-    container.appendChild(wrapper);
+    // Update transform and zIndex styles directly without rebuilding element
+    el.style.transform = `translate(-50%, -50%) translate(${item.x}px, ${item.y}px) rotate(${item.rotation}deg) scale(${item.scale}) scaleX(${item.flipX ? -1 : 1})`;
+    el.style.zIndex = item.zIndex;
   });
 }
 

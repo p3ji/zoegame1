@@ -35,25 +35,41 @@ export const CLIENTS = [
   {
     name: 'Clara',
     avatar: '👵',
-    message: 'Hello dear. Could you make me a sweet scone with cream and jam? A hot cup of tea on a vintage porcelain plate would remind me of my grandmother\'s garden.',
+    messages: [
+      "Hello Zoe, dear. Could you make me a sweet scone with cream and jam? A hot cup of tea on a vintage porcelain plate would remind me of my grandmother's garden.",
+      "Good afternoon Zoe. I feel like writing a letter today. Could you plate a couple of colorful macarons, a slice of lemon, and a warm teapot to keep me company?",
+      "Zoe, my sweet. It is raining so softly outside. I would love a herbal tea bag, some sugar cubes, and a freshly sliced scone with plenty of clotted cream."
+    ],
     theme: 'tea_party'
   },
   {
     name: 'Arlo',
     avatar: '🦊',
-    message: 'The forest leaves are falling, and I\'m looking for something rustic. An autumn feast on a dark stone plate—some roasted squash, fresh figs, and a warm bowl of soup would be perfect.',
+    messages: [
+      "Zoe, the forest leaves are falling, and I'm looking for something rustic. An autumn feast on a dark stone plate—some roasted squash, fresh figs, and a warm bowl of soup would be perfect.",
+      "Hi Zoe! The chill is setting in. Could you arrange a warm mug of apple cider with cinnamon bark, toasted pecans, and a golden maple leaf on a slate tray?",
+      "Hello Zoe. I found some beautiful figs today. Please pair them with pumpkin soup, acorn squash, and fresh rosemary sprigs for a cozy forest lunch."
+    ],
     theme: 'autumn_feast'
   },
   {
     name: 'Maya',
     avatar: '🎧',
-    message: 'I\'ve been studying all night under the stars. I\'d love a cozy midnight stack of pancakes with syrup, fresh berries, and starry sprinkles on a magical blue saucer.',
+    messages: [
+      "I've been studying all night under the stars, Zoe. I'd love a cozy midnight stack of pancakes with syrup, fresh berries, and starry sprinkles on a magical blue saucer.",
+      "Hey Zoe! Need a late-night brain boost. Could you plate a rich fudge brownie square with whipped cream and a hot mug of cocoa loaded with marshmallows?",
+      "Zoe, look at the stars tonight! Can you make me a sweet treat? Some pancakes with banana slices, strawberries, and chamomile blossoms would be so relaxing."
+    ],
     theme: 'midnight_snack'
   },
   {
     name: 'Kenji',
     avatar: '🎋',
-    message: 'Seeking a moment of calm. I would enjoy arranging a neat, colorful bento box with star-cut carrots, edamame, and rolled omelette on a bed of fresh rice.',
+    messages: [
+      "Seeking a moment of calm, Zoe. I would enjoy arranging a neat, colorful bento box with star-cut carrots, edamame, and rolled omelette on a bed of fresh rice.",
+      "Hello Zoe. Let's design a simple, peaceful lunch. I would like some soba noodles, green matcha tea, and fresh tofu cubes garnished with cherry blossoms.",
+      "Zoe, peace to you. Could you prepare a salmon nigiri sushi platter with edamame pods, cucumber fans, and a small dish of soy sauce in my bento tray?"
+    ],
     theme: 'zen_bento'
   }
 ];
