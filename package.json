@@ -1,5 +1,8 @@
 {
-  "dependencies": {
-    "@skedwards88/word_lists": "^3.0.19"
+  "name": "cozy-plating-game",
+  "version": "1.0.0",
+  "description": "A cozy, relaxing plating and cooking game",
+  "scripts": {
+    "start": "npx serve ."
   }
 }

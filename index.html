@@ -3,464 +3,161 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>N-1 Word Game - Cardboard Edition</title>
-  <!-- Google Fonts for handwriting/crafty feel -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Patrick+Hand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=29">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#d7a15c">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="apple-touch-icon" href="icon.svg">
-  <!-- Dynamic Favicon SVG -->
-  <link id="favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect x=%2210%22 y=%2225%22 width=%2280%22 height=%2265%22 rx=%228%22 fill=%22%23d7a15c%22 stroke=%22%23c68f49%22 stroke-width=%224%22/><path d=%22M 10 25 L 35 10 L 50 25 M 90 25 L 65 10 L 50 25%22 fill=%22none%22 stroke=%22%23c68f49%22 stroke-width=%224%22/><circle cx=%2235%22 cy=%2255%22 r=%226%22 fill=%22%231e293b%22/><circle cx=%2265%22 cy=%2255%22 r=%226%22 fill=%22%231e293b%22/><path d=%22M 42 70 Q 50 78 58 70%22 fill=%22none%22 stroke=%22%231e293b%22 stroke-width=%224%22 stroke-linecap=%22round%22/></svg>">
+  <title>Cozy Plating Kitchen - Relaxing Cooking Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="paper-texture-overlay"></div>
+  <!-- Linen texture overlay for organic craft paper feel -->
+  <div class="linen-overlay"></div>
 
-  <div class="game-container">
-    <!-- Header Area (Taped Cardboard Sign) -->
-    <header class="cardboard-header">
-      <div class="tape tape-top-left"></div>
-      <div class="tape tape-top-right"></div>
-      <div class="header-content">
-        <h1 class="logo-title">N-1 <span class="logo-sub">Word Craft</span></h1>
-        
-        <div class="header-stats">
-          <div class="stat-tag">
-            <span class="stat-label">Words:</span>
-            <span id="total-score" class="stat-value">0</span>
-          </div>
-          <div class="stat-tag" id="timer-tag">
-            <span class="stat-label">Time:</span>
-            <span id="game-timer" class="stat-value">2:00</span>
-          </div>
-          <div class="stat-tag" id="bonus-tag">
-            <span class="stat-label">Bonus:</span>
-            <span id="bonus-counter" class="stat-value">0</span>
-          </div>
+  <div class="tabletop-container" id="tabletop-wood">
+    
+    <!-- Top Header Bar -->
+    <header class="header-bar">
+      <h1 class="game-title">Cozy Plating Kitchen</h1>
+      <div class="header-controls">
+        <div class="stat-pill">
+          Dishes Created: <span id="dishes-counter" class="stat-val">0</span>
         </div>
-
-        <!-- Header Controls Container -->
-        <div class="header-controls">
-          <button id="btn-leaderboard-icon" class="btn-icon" aria-label="Daily Leaderboard">🏆</button>
-          <button id="btn-history-icon" class="btn-icon" aria-label="Attempt History">📜</button>
-          <div class="settings-dropdown-container">
-            <button id="btn-settings" class="btn-icon" aria-label="Settings/Menu">⚙️</button>
-            <div id="settings-dropdown" class="settings-dropdown-content hidden">
-              <div class="tape tape-dropdown"></div>
-              <button id="btn-sound" class="btn-craft btn-small">Sound: ON</button>
-              <button id="btn-difficulty" class="btn-craft btn-small">Easy Mode: OFF</button>
-              <button id="btn-help" class="btn-craft btn-small">How to Play</button>
-              <button id="btn-reset" class="btn-craft btn-small btn-danger">Reset Game</button>
-              <button id="btn-force-update" class="btn-craft btn-small" style="font-size:0.7rem;opacity:0.75">🔄 Force Update</button>
-            </div>
-          </div>
-        </div>
+        <button id="btn-open-journal" class="btn-cozy">My Journal 📖</button>
       </div>
     </header>
 
-    <!-- Main Game Board (No scroll single screen layout) -->
-    <main class="game-board-compact">
-      
-      <!-- Top Section: Mascot (left) and Mini Boxes Row (right) -->
-      <section class="mascot-and-boxes-panel">
-        <div class="tape tape-top"></div>
-        
-        <!-- Boxy Mascot Shelf Area -->
-        <div class="mascot-container-compact">
-          <div id="boxy-mascot" class="boxy-mascot idle">
-            <div class="boxy-arm arm-left"></div>
-            <div class="boxy-body">
-              <div class="box-face">
-                <div class="box-eyes">
-                  <div class="box-eye eye-left">
-                    <div class="pupil"></div>
-                    <div class="spiral hidden">@</div>
-                  </div>
-                  <div class="box-eye eye-right">
-                    <div class="pupil"></div>
-                    <div class="spiral hidden">@</div>
-                  </div>
-                </div>
-                <div class="box-mouth smile"></div>
-                <div class="box-cheeks"></div>
-              </div>
-              <div class="box-flap flap-left"></div>
-              <div class="box-flap flap-right"></div>
-            </div>
-            <div class="boxy-arm arm-right"></div>
-            <div class="boxy-legs">
-              <div class="boxy-leg leg-left"></div>
-              <div class="boxy-leg leg-right"></div>
-            </div>
-            <!-- Speech Bubble -->
-            <div id="boxy-bubble" class="boxy-bubble hidden">
-              <span id="boxy-bubble-text">Craft words!</span>
-            </div>
+    <!-- Client Prompt & Sounds settings panel -->
+    <section class="interaction-row">
+      <!-- Speech bubble from active client -->
+      <div class="client-bubble-panel">
+        <div class="client-avatar" id="client-avatar">👵</div>
+        <div class="client-content">
+          <div class="client-header">
+            <span class="client-name" id="client-name">Clara</span>
+            <span class="theme-pill">Current Theme</span>
           </div>
-          <div class="shelf-wood-compact"></div>
+          <p class="client-bubble-text" id="client-bubble-text">"Hello dear. Could you make me a sweet scone with cream and jam? A hot cup of tea on a vintage porcelain plate would remind me of my grandmother's garden."</p>
         </div>
+      </div>
 
-        <!-- Mini Cardboard Boxes display (words to find) -->
-        <div class="mini-boxes-panel">
-          <div class="mini-boxes-header">
-            <h2 class="level-indicator"><span id="level-letter-count-label">4-Letter Word</span>: <span id="current-word-display" class="highlight-word">----</span></h2>
-            <div class="words-progress">
-              <span id="words-found-count" class="progress-numbers">0 / 0</span>
-            </div>
-          </div>
-          <div class="progress-bar-container">
-            <div id="words-progress-bar" class="progress-bar" style="width: 0%"></div>
-            <div id="goal-marker" class="goal-marker"></div>
-          </div>
-          
-          <!-- Go To Next Level Button (Visible when target complete) -->
-          <div id="next-level-btn-container" class="next-level-btn-container hidden">
-            <button id="btn-next-level" class="btn-craft btn-medium btn-primary">GO TO NEXT LEVEL ➔</button>
-          </div>
-          <!-- Grid of Mini Closed/Open Boxes -->
-          <div id="mini-boxes-grid" class="mini-boxes-grid">
-            <!-- Dynamically populated in JS -->
-          </div>
+      <!-- Cozy Audio Synthesizer Toggles -->
+      <div class="soundscape-panel">
+        <div class="sound-toggle-row">
+          <span class="sound-label">🌧️ Soft Rain</span>
+          <input type="checkbox" id="soundscape-rain" class="toggle-switch" data-sound="rain">
         </div>
-
-      </section>
-
-      <!-- Middle Section: Spelled Word in Wheel Center -->
-      <section class="wheel-panel-compact">
-        <!-- Hints layout: GET HINT button on the left, friends on the right -->
-        <div class="hints-row-above-wheel">
-          <button id="btn-hint" class="btn-craft btn-medium btn-accent">
-            <span>GET HINT</span>
-          </button>
-          <div class="hints-friends-container">
-            <!-- Boxy's Friends (Roxy, Toxy, Foxy) -->
-            <div id="friend-roxy" class="boxy-friend roxy" title="Roxy (the mailing tube)">
-              <div class="friend-body">
-                <div class="friend-eyes">
-                  <div class="friend-eye"></div>
-                  <div class="friend-eye"></div>
-                </div>
-                <div class="friend-mouth smile"></div>
-              </div>
-              <span class="friend-label">Roxy</span>
-            </div>
-            <div id="friend-toxy" class="boxy-friend toxy" title="Toxy (the diamond box)" style="display: none;">
-              <div class="friend-body-diamond">
-                <div class="friend-face-container">
-                  <div class="friend-eyes">
-                    <div class="friend-eye"></div>
-                    <div class="friend-eye"></div>
-                  </div>
-                  <div class="friend-mouth open"></div>
-                </div>
-              </div>
-              <span class="friend-label">Toxy</span>
-            </div>
-            <div id="friend-foxy" class="boxy-friend foxy" title="Foxy (the flat pizza box)" style="display: none;">
-              <div class="friend-body">
-                <div class="friend-eyes">
-                  <div class="friend-eye"></div>
-                  <div class="friend-eye"></div>
-                </div>
-                <div class="friend-mouth flat"></div>
-              </div>
-              <span class="friend-label">Foxy</span>
-            </div>
-
-            <!-- Bonus Friends (Initially Hidden) -->
-            <div id="friend-boby" class="boxy-friend boby hidden-friend" title="Boby (the bubble envelope)">
-              <div class="friend-body">
-                <div class="envelope-flap"></div>
-                <div class="friend-eyes">
-                  <div class="friend-eye"></div>
-                  <div class="friend-eye"></div>
-                </div>
-                <div class="friend-mouth smile"></div>
-              </div>
-              <span class="friend-label">Boby</span>
-            </div>
-
-            <div id="friend-cuppy" class="boxy-friend cuppy hidden-friend" title="Cuppy (the paper cup)">
-              <div class="friend-body-cup">
-                <div class="cup-sleeve">
-                  <div class="friend-eyes">
-                    <div class="friend-eye"></div>
-                    <div class="friend-eye"></div>
-                  </div>
-                  <div class="friend-mouth open"></div>
-                </div>
-              </div>
-              <span class="friend-label">Cuppy</span>
-            </div>
-
-            <div id="friend-papy" class="boxy-friend papy hidden-friend" title="Papy (the paper roll)">
-              <div class="friend-body-roll">
-                <div class="roll-spiral"></div>
-                <div class="friend-eyes">
-                  <div class="friend-eye"></div>
-                  <div class="friend-eye"></div>
-                </div>
-                <div class="friend-mouth flat"></div>
-              </div>
-              <span class="friend-label">Papy</span>
-            </div>
-          </div>
+        <div class="sound-toggle-row">
+          <span class="sound-label">🔥 Crackling Fire</span>
+          <input type="checkbox" id="soundscape-fire" class="toggle-switch" data-sound="fireplace">
         </div>
-
-        <div class="wheel-outer-container">
-          <div id="letter-wheel" class="letter-wheel">
-            <!-- Circular center panel that displays spelling and is clickable to submit -->
-            <div id="wheel-center-input" class="wheel-center-input" title="Click to Submit">
-              <span id="spelled-word-text" class="spelled-word-text"></span>
-              <span class="cursor">|</span>
-              <span class="tap-submit-hint">TAP TO SUBMIT</span>
-            </div>
-            <!-- Letter Tiles dynamically generated -->
-          </div>
+        <div class="sound-toggle-row">
+          <span class="sound-label">🎐 Wind Chimes</span>
+          <input type="checkbox" id="soundscape-chime" class="toggle-switch" data-sound="chimes">
         </div>
-
-        <!-- Wheel controls -->
-        <div class="compact-controls">
-          <button id="btn-shuffle" class="btn-craft btn-small">Shuffle</button>
-          <button id="btn-clear" class="btn-craft btn-small">Clear</button>
-          <button id="btn-submit" class="btn-craft btn-medium btn-primary">SUBMIT</button>
+        <div class="vol-slider-row">
+          <span>🔈</span>
+          <input type="range" id="volume-control" class="cozy-slider" min="0" max="1" step="0.05" value="0.5" aria-label="Master Volume">
+          <span>🔊</span>
         </div>
-      </section>
+      </div>
+    </section>
 
+    <!-- Main Game Board Plating Table -->
+    <main class="plating-area">
+      <!-- Active Item Fine-Tuning controls bar (hidden when nothing selected) -->
+      <div id="item-controls-panel" class="item-controls-panel hidden">
+        <div class="control-group">
+          <label for="control-rotate">Rotate</label>
+          <input type="range" id="control-rotate" class="cozy-slider" min="0" max="360" value="0">
+        </div>
+        <div class="divider"></div>
+        <div class="control-group">
+          <label for="control-scale">Size</label>
+          <input type="range" id="control-scale" class="cozy-slider" min="0.4" max="2.0" step="0.05" value="1">
+        </div>
+        <div class="divider"></div>
+        <button id="btn-flip" title="Flip Horizontal">↔️</button>
+        <button id="btn-layer-up" title="Bring Forward">🔼</button>
+        <button id="btn-layer-down" title="Send Backward">🔽</button>
+        <button id="btn-delete-item" title="Remove Item" style="color:var(--accent-terracotta)">✕</button>
+      </div>
 
-
+      <!-- Plating Canvas -->
+      <div class="plating-canvas-container">
+        <!-- Rendered plate background -->
+        <div class="canvas-layer" id="canvas-plate-layer"></div>
+        <!-- Absolute positioned food ingredients -->
+        <div class="canvas-layer" id="canvas-ingredients-layer"></div>
+      </div>
     </main>
-  </div>
 
-  <!-- Level Transition Overlay -->
-  <div id="level-transition-overlay" class="transition-overlay hidden">
-    <div class="boxy-carrier">
-      <!-- The sign -->
-      <div class="boxy-sign">
-        <div class="boxy-sign-board" id="transition-sign-text">LEVEL 2</div>
-        <div class="boxy-sign-stick"></div>
-      </div>
-      
-      <!-- Boxy Mascot -->
-      <div class="boxy-mascot walking">
-        <div class="boxy-arm arm-left"></div>
-        <div class="boxy-body">
-          <div class="box-face">
-            <div class="box-eyes">
-              <div class="box-eye eye-left">
-                <div class="pupil"></div>
-              </div>
-              <div class="box-eye eye-right">
-                <div class="pupil"></div>
-              </div>
-            </div>
-            <div class="box-mouth smile"></div>
-            <div class="box-cheeks"></div>
-          </div>
-          <div class="box-flap flap-left"></div>
-          <div class="box-flap flap-right"></div>
-        </div>
-        <div class="boxy-arm arm-right"></div>
-        <div class="boxy-legs">
-          <div class="boxy-leg leg-left"></div>
-          <div class="boxy-leg leg-right"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <!-- Bottom Sliding Drawer with options -->
+    <section class="bottom-drawer">
+      <!-- Client switching Tabs -->
+      <nav class="client-bar">
+        <button class="client-select-btn active">👵 Clara</button>
+        <button class="client-select-btn">🦊 Arlo</button>
+        <button class="client-select-btn">🎧 Maya</button>
+        <button class="client-select-btn">🎋 Kenji</button>
+      </nav>
 
-  <!-- Help Overlay Modal -->
-  <div id="help-modal" class="modal-overlay hidden">
-    <div class="modal-cardboard">
-      <div class="tape tape-modal-top"></div>
-      <div class="notebook-sheet modal-notebook">
-        <h2>How to Play N-1 Word Craft</h2>
-        <ol>
-          <li>Spell words (3+ letters) using the cardboard wheel's letters.</li>
-          <li>Typed/clicked letters appear in the <strong>center of the wheel</strong>.</li>
-          <li>Find all possible words <strong>except one</strong> to unlock the next level word package.</li>
-          <li>When you submit a correct word, Boxy will <strong>eat it</strong> and one of the mini boxes above will pop open!</li>
-          <li><strong>Go to</strong> the next starter word package (which grows to 5, then 6, then <strong>7 letters</strong>).</li>
-          <li>Complete the 7-letter level to claim ultimate Victory!</li>
-        </ol>
-        <p class="modal-tips">
-          💡 <strong>Tip:</strong> Click the center of the wheel to submit. Shuffling is free!
-        </p>
-        <button id="btn-close-help" class="btn-craft btn-medium" onclick="document.getElementById('help-modal').classList.add('hidden')">Got it!</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Victory Overlay Modal -->
-  <div id="victory-modal" class="modal-overlay hidden">
-    <div class="modal-cardboard victory-cardboard">
-      <div class="tape tape-victory"></div>
-      <div class="victory-content">
-        <h2 class="victory-title">🎉 VICTORY! 🎉</h2>
-        <p>You have successfully completed the N-1 Word Craft challenge!</p>
-        
-        <div class="victory-stats">
-          <div class="vic-stat">
-            <span class="vic-stat-label">Total Words</span>
-            <span id="vic-final-score" class="vic-stat-val">0</span>
+      <div class="drawer-content">
+        <!-- Plates drawer selection -->
+        <div class="plate-selection-section">
+          <h4>Plates</h4>
+          <div class="plate-btn-row" id="plate-selection-row">
+            <!-- Plate choice SVGs will be populated here -->
           </div>
         </div>
 
-        <!-- Leaderboard Submission -->
-        <div class="leaderboard-submission">
-          <div class="tape tape-sub"></div>
-          <h3>Join the Cardboard Leaderboard</h3>
-          <div class="submission-row">
-            <input type="text" id="player-name-input" maxlength="15" placeholder="Enter name" aria-label="Player Name">
-            <button id="btn-submit-score" class="btn-craft btn-small btn-primary">Submit</button>
-          </div>
-          <p id="leaderboard-status" class="leaderboard-status hidden"></p>
-        </div>
-
-        <p class="victory-cheer">Boxy is extremely proud of you! 📦💖</p>
-        <button id="btn-play-again" class="btn-craft btn-large btn-primary">PLAY AGAIN</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Home Screen / Welcome Overlay -->
-  <div id="home-screen" class="modal-overlay">
-    <div class="modal-cardboard home-cardboard">
-      <div class="tape tape-modal-top"></div>
-      <div class="notebook-sheet modal-notebook home-notebook">
-        <!-- Logo/Title -->
-        <h1 class="logo-title home-title">N-1 <span class="logo-sub">Word Craft</span></h1>
-        
-        <!-- Welcome Boxy Mascot -->
-        <div class="home-mascot-area">
-          <div class="boxy-mascot idle">
-            <div class="boxy-arm arm-left"></div>
-            <div class="boxy-body">
-              <div class="box-face">
-                <div class="box-eyes">
-                  <div class="box-eye eye-left">
-                    <div class="pupil"></div>
-                  </div>
-                  <div class="box-eye eye-right">
-                    <div class="pupil"></div>
-                  </div>
-                </div>
-                <div class="box-mouth smile"></div>
-                <div class="box-cheeks"></div>
-              </div>
-              <div class="box-flap flap-left"></div>
-              <div class="box-flap flap-right"></div>
-            </div>
-            <div class="boxy-arm arm-right"></div>
-            <div class="boxy-legs">
-              <div class="boxy-leg leg-left"></div>
-              <div class="boxy-leg leg-right"></div>
-            </div>
-          </div>
-          <!-- Speech Bubble -->
-          <div class="home-speech-bubble">
-            <span>Hi! Let's craft words out of cardboard!</span>
+        <!-- Ingredients drawer scrollable panel -->
+        <div class="ingredients-drawer-section">
+          <h4>Ingredients</h4>
+          <div class="drawer-items-row" id="drawer-items-container">
+            <!-- Dynamic Category specific toppings cards -->
           </div>
         </div>
 
-        <!-- Rules list -->
-        <div class="home-rules">
-          <p class="rule-item">1. Find as many words as you can using the letters of the starter word.</p>
-          <p class="rule-item">2. Find all the words but <span id="home-rule-count">1</span> to move to the next level.</p>
+        <!-- Finishing controls -->
+        <div style="display:flex; flex-direction:column; gap:8px">
+          <button id="btn-finish-plating" class="btn-cozy btn-accent">Finish Plating 📷</button>
+          <button id="btn-clear-plate" class="btn-cozy" style="font-size:0.75rem; padding: 4px 8px; box-shadow: 0 2px 0 var(--color-text)">Clear Plate</button>
         </div>
+      </div>
+    </section>
 
-        <!-- Action Controls -->
-        <div class="home-actions">
-          <button id="home-btn-difficulty" class="btn-craft btn-medium">Easy Mode: OFF</button>
-          <button id="btn-start-game" class="btn-craft btn-large btn-primary">START CRAFTING</button>
+    <!-- Polaroid Dialog save confirmation overlay -->
+    <div id="polaroid-save-modal" class="overlay-modal hidden">
+      <div class="polaroid-dialog">
+        <div class="polaroid-frame">
+          <img id="polaroid-shot-image" class="polaroid-photo" src="" alt="Polaroid shot of your creation">
+          <input type="text" id="modal-dish-title" class="polaroid-label-input" placeholder="Title your dish...">
+          <span id="modal-dish-date" class="polaroid-date">July 1, 2026</span>
+        </div>
+        <div id="client-response-text" class="client-feedback">
+          <strong>Clara:</strong> "This is lovely! Exactly what I wanted!"
+        </div>
+        <div class="modal-actions">
+          <button id="btn-modal-cancel" class="btn-cozy">Discard</button>
+          <button id="btn-modal-save" class="btn-cozy btn-accent">Keep Memory 📖</button>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Reset Confirmation Modal -->
-  <div id="reset-modal" class="modal-overlay hidden">
-    <div class="modal-cardboard reset-cardboard">
-      <div class="tape tape-reset"></div>
-      <div class="reset-content">
-        <h2>Reset Game?</h2>
-        <p>Are you sure you want to reset your progress and start back at Level 1 (4 letters)? This will clear your current progress!</p>
-        <div class="reset-actions">
-          <button id="btn-confirm-reset" class="btn-craft btn-danger">Yes, Reset</button>
-          <button id="btn-cancel-reset" class="btn-craft">Cancel</button>
+    <!-- Journal modal gallery overlay -->
+    <div id="journal-overlay" class="overlay-modal hidden">
+      <div class="journal-modal">
+        <div class="journal-header">
+          <h2 class="journal-title">My Cozy Recipe Journal</h2>
+          <button id="btn-close-journal" class="btn-cozy">Close</button>
+        </div>
+        <div class="journal-content">
+          <div class="journal-grid" id="journal-list">
+            <!-- Polaroid cards will render here -->
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 
-  <!-- Leaderboard Modal -->
-  <div id="leaderboard-modal" class="modal-overlay hidden">
-    <div class="modal-cardboard leaderboard-cardboard">
-      <div class="tape tape-modal-top"></div>
-      <div class="notebook-sheet modal-notebook">
-        <h2>Cardboard Leaderboard</h2>
-        <div class="leaderboard-tabs">
-          <button id="tab-leaderboard-today" class="tab-btn active">Today</button>
-          <button id="tab-leaderboard-alltime" class="tab-btn">All Time</button>
-        </div>
-        <div id="leaderboard-list-container" class="leaderboard-list-container">
-          <!-- Dynamically populated scores -->
-        </div>
-        <div class="leaderboard-actions">
-          <button id="btn-close-leaderboard" class="btn-craft btn-medium">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- History/Attempts Overlay Modal -->
-  <div id="history-modal" class="modal-overlay hidden">
-    <div class="modal-cardboard history-cardboard">
-      <div class="tape tape-modal-top"></div>
-      <div class="notebook-sheet modal-notebook">
-        <h2>Past Word Crafts</h2>
-        <div id="history-list-container" class="history-list-container">
-          <!-- Dynamically populated past attempts -->
-        </div>
-        <div class="history-actions">
-          <button id="btn-close-history" class="btn-craft btn-medium">Close</button>
-          <button id="btn-clear-history" class="btn-craft btn-medium btn-danger">Reset History</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Particle / Confetti Canvas Layer -->
-  <canvas id="confetti-canvas"></canvas>
-
-  <!-- Supabase Client CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <!-- Game Scripts (v=29) -->
-  <script src="words_data.js?v=29"></script>
-  <script src="game.js?v=37"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').then(reg => {
-          // Force the browser to check for a newer SW on every page load
-          reg.update();
-
-          // When a new SW takes control (after skipWaiting), reload immediately
-          // so users always get the latest game code
-          let refreshing = false;
-          navigator.serviceWorker.addEventListener('controllerchange', () => {
-            if (!refreshing) {
-              refreshing = true;
-              window.location.reload();
-            }
-          });
-        }).catch(err => console.error('SW error:', err));
-      });
-    }
-  </script>
+  <script type="module" src="game.js"></script>
 </body>
 </html>

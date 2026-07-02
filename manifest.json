@@ -1,11 +1,11 @@
 {
-  "name": "N-1 Word Craft",
-  "short_name": "N-1 Word",
-  "description": "A handcrafted cardboard word game where starter words shrink from 7 to 4 letters.",
+  "name": "Cozy Plating Kitchen",
+  "short_name": "Cozy Plating",
+  "description": "A relaxing plating and cooking game where you design interesting dishes.",
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#ecdab9",
+  "background_color": "#f7ede2",
   "theme_color": "#d7a15c",
   "icons": [
     {
