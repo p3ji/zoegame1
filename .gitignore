@@ -1,1 +1,5 @@
 node_modules/
+screenshot.png
+puppeteer_test.js
+test_playwright.js
+.claude/

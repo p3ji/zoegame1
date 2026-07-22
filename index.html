@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Three.js Background Canvas -->
+  <canvas id="three-bg-canvas"></canvas>
+
   <!-- Linen texture overlay for organic craft paper feel -->
   <div class="linen-overlay"></div>
 
@@ -89,8 +92,12 @@
           <input type="checkbox" id="soundscape-fire" class="toggle-switch" data-sound="fireplace">
         </div>
         <div class="sound-toggle-row">
-          <span class="sound-label">🎐 Wind Chimes</span>
+          <span class="sound-label">🍃 Wind Chimes</span>
           <input type="checkbox" id="soundscape-chime" class="toggle-switch" data-sound="chimes">
+        </div>
+        <div class="sound-toggle-row">
+          <span class="sound-label">🎵 Ambient Music</span>
+          <input type="checkbox" id="soundscape-music" class="toggle-switch" data-sound="music">
         </div>
         <div class="vol-slider-row">
           <span>🔈</span>
@@ -194,7 +201,10 @@
 
   </div>
 
-  <script type="module" src="game.js"></script>
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="assets.js"></script>
+  <script src="three-scene.js"></script>
+  <script src="game.js"></script>
 
   <!-- Portfolio badge -->
   <a href="https://p3ji.github.io/portfolio/" target="_blank" rel="noopener" class="pj-badge">More by Peter Jiao ↗</a>

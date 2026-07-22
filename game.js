@@ -1,5 +1,5 @@
 // Cozy Plating Game - Main Game Logic & Audio Engine
-import { THEMES, CLIENTS, PLATES, INGREDIENTS } from './assets.js';
+(() => {
 
 // --- GAME STATE ---
 let currentThemeId = 'tea_party';
@@ -22,12 +22,14 @@ let masterGain = null;
 const ambientNodes = {
   rain: null,
   fireplace: null,
-  chimes: null
+  chimes: null,
+  music: null
 };
 const ambientGains = {
   rain: null,
   fireplace: null,
-  chimes: null
+  chimes: null,
+  music: null
 };
 
 // Initialize Audio Context on first interaction
@@ -47,6 +49,7 @@ function initAudio() {
     startRainSoundscape();
     startFireplaceSoundscape();
     startChimesScheduler();
+    startMusicScheduler();
   } catch (e) {
     console.error("Web Audio API not supported", e);
   }
@@ -220,7 +223,7 @@ function triggerChime() {
 }
 
 // --- INTERACTIVE SOUND EFFECTS ---
-export function playSFX(type) {
+function playSFX(type) {
   if (!audioCtx) return;
   resumeAudio();
   
@@ -329,15 +332,67 @@ export function playSFX(type) {
   }
 }
 
+// --- SOUNDSCAPE: MUSIC ---
+function startMusicScheduler() {
+  ambientGains.music = audioCtx.createGain();
+  ambientGains.music.gain.setValueAtTime(0, audioCtx.currentTime); // Start muted
+  
+  // Add some reverb-like delay for atmosphere
+  const delay = audioCtx.createDelay();
+  delay.delayTime.value = 0.5;
+  const feedback = audioCtx.createGain();
+  feedback.gain.value = 0.4;
+  delay.connect(feedback);
+  feedback.connect(delay);
+  
+  ambientGains.music.connect(delay);
+  ambientGains.music.connect(masterGain);
+  delay.connect(masterGain);
+  
+  // Pentatonic scale frequencies for cozy vibe (C major pentatonic)
+  const pentatonic = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33];
+  
+  // Simple sequencer
+  setInterval(() => {
+    if (ambientGains.music.gain.value > 0) {
+      if (Math.random() < 0.7) {
+        const freq = pentatonic[Math.floor(Math.random() * pentatonic.length)];
+        triggerMusicNote(freq);
+      }
+    }
+  }, 1500);
+}
+
+function triggerMusicNote(freq) {
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  
+  osc.type = 'sine'; // Soft sine wave
+  osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+  
+  const now = audioCtx.currentTime;
+  
+  // Soft attack and long release
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(0.08, now + 1.0); // attack
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 5.0); // release
+  
+  osc.connect(gain);
+  gain.connect(ambientGains.music);
+  
+  osc.start(now);
+  osc.stop(now + 5.5);
+}
+
 // Control Volume & States
-export function setMasterVolume(val) {
+function setMasterVolume(val) {
   initAudio();
   if (masterGain) {
     masterGain.gain.linearRampToValueAtTime(val, audioCtx.currentTime + 0.05);
   }
 }
 
-export function toggleAmbientSound(type, state) {
+function toggleAmbientSound(type, state) {
   initAudio();
   resumeAudio();
   const gainNode = ambientGains[type];
@@ -385,7 +440,7 @@ function updateStatsUI() {
 }
 
 // Select Plate
-export function selectPlate(plateId) {
+function selectPlate(plateId) {
   if (!PLATES[plateId]) return;
   currentPlateId = plateId;
   
@@ -400,9 +455,15 @@ export function selectPlate(plateId) {
 }
 
 // Change Active Client / Theme
-export function setClientTheme(clientIndex) {
+function setClientTheme(clientIndex) {
   currentClient = CLIENTS[clientIndex];
   currentThemeId = currentClient.theme;
+  
+  if (window.threeSceneModule) {
+    try {
+      window.threeSceneModule.setTheme3D(currentThemeId);
+    } catch(e) {}
+  }
   
   // Update Prompt UI
   document.getElementById('client-name').textContent = currentClient.name;
@@ -432,7 +493,7 @@ export function setClientTheme(clientIndex) {
   }
 }
 
-export function clearPlate() {
+function clearPlate() {
   placedItems = [];
   activeItemId = null;
   itemCounter = 0;
@@ -442,7 +503,7 @@ export function clearPlate() {
 }
 
 // Spawn Ingredient onto Plate
-export function addIngredientToPlate(ingredientId) {
+function addIngredientToPlate(ingredientId) {
   const ingData = INGREDIENTS[ingredientId];
   if (!ingData) return;
   
@@ -606,21 +667,21 @@ function hideItemControls() {
 }
 
 // Set Transform from sliders
-export function handleRotateControl(val) {
+function handleRotateControl(val) {
   const item = placedItems.find(i => i.id === activeItemId);
   if (!item) return;
   item.rotation = parseInt(val, 10);
   renderPlacedItems();
 }
 
-export function handleScaleControl(val) {
+function handleScaleControl(val) {
   const item = placedItems.find(i => i.id === activeItemId);
   if (!item) return;
   item.scale = parseFloat(val);
   renderPlacedItems();
 }
 
-export function handleFlipControl() {
+function handleFlipControl() {
   const item = placedItems.find(i => i.id === activeItemId);
   if (!item) return;
   item.flipX = !item.flipX;
@@ -628,7 +689,7 @@ export function handleFlipControl() {
   renderPlacedItems();
 }
 
-export function handleLayerUpControl() {
+function handleLayerUpControl() {
   const item = placedItems.find(i => i.id === activeItemId);
   if (!item) return;
   highestZIndex++;
@@ -637,7 +698,7 @@ export function handleLayerUpControl() {
   renderPlacedItems();
 }
 
-export function handleLayerDownControl() {
+function handleLayerDownControl() {
   const item = placedItems.find(i => i.id === activeItemId);
   if (!item) return;
   
@@ -648,7 +709,7 @@ export function handleLayerDownControl() {
   renderPlacedItems();
 }
 
-export function handleDeleteControl() {
+function handleDeleteControl() {
   if (!activeItemId) return;
   placedItems = placedItems.filter(i => i.id !== activeItemId);
   activeItemId = null;
@@ -794,7 +855,7 @@ function drawSvgToCanvasContext(ctx, svgString, x, y, width, height) {
   });
 }
 
-export async function finishPlating() {
+async function finishPlating() {
   if (placedItems.length === 0) {
     alert("Place some ingredients on your plate first!");
     return;
@@ -855,7 +916,7 @@ function generateClientFeedback() {
   }
 }
 
-export function savePolaroidToJournal() {
+function savePolaroidToJournal() {
   const modalTitle = document.getElementById('modal-dish-title').value || "Cozy Dish";
   const polaroidImg = document.getElementById('polaroid-shot-image').src;
   const dateStr = document.getElementById('modal-dish-date').textContent;
@@ -889,7 +950,7 @@ export function savePolaroidToJournal() {
 }
 
 // --- RENDER JOURNAL VIEW ---
-export function renderJournalView() {
+function renderJournalView() {
   const container = document.getElementById('journal-list');
   if (!container) return;
   
@@ -967,7 +1028,13 @@ function switchToNextClient() {
 }
 
 // --- INITIALIZATION ---
-window.addEventListener('DOMContentLoaded', () => {
+function initGame() {
+  if (window.threeSceneModule) {
+    try {
+      window.threeSceneModule.init3DScene();
+    } catch(e) {}
+  }
+
   // Bind global UI events
   loadData();
   renderPlateDrawer();
@@ -979,9 +1046,11 @@ window.addEventListener('DOMContentLoaded', () => {
   const rainToggle = document.getElementById('soundscape-rain');
   const fireToggle = document.getElementById('soundscape-fire');
   const chimeToggle = document.getElementById('soundscape-chime');
+  const musicToggle = document.getElementById('soundscape-music');
   const volControl = document.getElementById('volume-control');
   
-  [rainToggle, fireToggle, chimeToggle].forEach(toggle => {
+  [rainToggle, fireToggle, chimeToggle, musicToggle].forEach(toggle => {
+    if (!toggle) return;
     toggle.addEventListener('change', (e) => {
       const type = e.target.dataset.sound;
       toggleAmbientSound(type, e.target.checked);
@@ -1054,4 +1123,12 @@ window.addEventListener('DOMContentLoaded', () => {
       hideItemControls();
     }
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', initGame);
+} else {
+  initGame();
+}
+
+})();

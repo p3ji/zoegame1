@@ -4,5 +4,9 @@
   "description": "A cozy, relaxing plating and cooking game",
   "scripts": {
     "start": "npx serve ."
+  },
+  "dependencies": {
+    "playwright": "^1.61.1",
+    "puppeteer": "^25.3.0"
   }
 }

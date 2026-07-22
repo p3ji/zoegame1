@@ -1,6 +1,6 @@
 // Cozy Plating Game - Asset Definitions (SVG Graphics & Themes)
 
-export const THEMES = {
+const THEMES = {
   tea_party: {
     id: 'tea_party',
     name: 'Cozy Afternoon Tea',
@@ -31,7 +31,7 @@ export const THEMES = {
   }
 };
 
-export const CLIENTS = [
+const CLIENTS = [
   {
     name: 'Clara',
     avatar: '👵',
@@ -364,7 +364,7 @@ export const CLIENTS = [
   }
 ];
 
-export const PLATES = {
+const PLATES = {
   wooden_tray: {
     id: 'wooden_tray',
     name: 'Rustic Wooden Tray',
@@ -496,7 +496,7 @@ export const PLATES = {
   }
 };
 
-export const INGREDIENTS = {
+const INGREDIENTS = {
   // --- TEA PARTY ---
   scone_bottom: {
     id: 'scone_bottom',
